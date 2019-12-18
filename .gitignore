@@ -102,3 +102,25 @@ dist
 
 # TernJS port file
 .tern-port
+build/asset-manifest.json
+build/favicon.ico
+build/index.html
+build/logo192.png
+build/logo256.png
+build/manifest.json
+build/precache-manifest.0354a289452c7262289be2b9a3afc740.js
+build/service-worker.js
+build/static/css/main.d382081c.chunk.css
+build/static/css/main.d382081c.chunk.css.map
+build/static/js/2.4ed90b15.chunk.js
+build/static/js/2.4ed90b15.chunk.js.LICENSE
+build/static/js/2.4ed90b15.chunk.js.map
+build/static/js/main.cf510bd7.chunk.js
+build/static/js/main.cf510bd7.chunk.js.map
+build/static/js/runtime-main.680679b4.js
+build/static/js/runtime-main.680679b4.js.map
+build/static/media/dashphoto.313435e4.jpg
+build/static/media/KennethsResume.f55ba638.pdf
+build/static/media/kr.bf35584f.jpeg
+build/static/media/MERN.ec0f4451.png
+build/static/media/Transmission.c5df2b9d.png
