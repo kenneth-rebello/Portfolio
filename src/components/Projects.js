@@ -7,6 +7,7 @@ const Projects = props => {
     const [projects, setProjects] = useState([])
 
     useEffect(()=>{
+        window.$('.modal').modal();
         fetchProjects(); 
     },[]);
 

@@ -1,7 +1,7 @@
 import React,{ Fragment, useEffect, useState } from 'react'
 import Resume from    '../pdfs/KennethsResume.pdf'
 import photo from '../img/dashphoto.jpg'
-import Navbar from './Navbar'
+import Header from './Header'
 import Projects from './Projects'
 import Skills from './Skills'
 import Honours from './Honours'
@@ -66,18 +66,18 @@ const Main = () => {
 
     return (
         loading ? <Spinner/> :<Fragment>    
-            <Navbar user={currentUser}/>
+            <Header user={currentUser}/>
 
             <div className="header row">
                 <div className="col l3 m6 s12 center-align"><img src={photo} alt=""/></div>
                 <div className="col l9 m6 s12">
                     <span>Kenneth Rebello</span>
                     {position.split('-').map(line=>(
-                        <p>{line}</p>
+                        <p key={line}>{line}</p>
                     ))}
                     <hr></hr>
                     {bio.split('-').map(line=>(
-                        <p>{line}</p>
+                        <p key={line}>{line}</p>
                     ))}
                     <div className="social">
                         <a href={Resume} className="cv" target="_blank" rel="noopener noreferrer">CV</a>
@@ -98,7 +98,7 @@ const Main = () => {
                 
                 <div className="row">
                     { details && mapDetails.map(detail => (
-                        <div className="col l4 m6 s12">
+                        <div key={detail} className="col l4 m6 s12">
                             <p className="center-align">{`${detail}: ${details[detail]}`}</p>        
                         </div>   
                     ))}

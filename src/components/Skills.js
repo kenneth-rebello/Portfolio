@@ -5,6 +5,7 @@ import { addSkill, getSkills } from '../firebase/firebase.utils';
 const Skills = props => {
 
     useEffect(()=>{
+        window.$('.modal').modal()
         fetchSkills();
     },[]);
 

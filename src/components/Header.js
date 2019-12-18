@@ -1,8 +1,12 @@
-import React ,{ Fragment } from 'react';
+import React ,{ Fragment, useEffect } from 'react';
 import SignIn from './SignIn';
 import logo from '../img/kr.jpeg'; 
 
-const Navbar = (props) => {
+const Header = (props) => {
+
+    useEffect(()=>{
+        window.$('.sidenav').sidenav();
+    },[])
 
     return (
         <Fragment>
@@ -32,8 +36,5 @@ const Navbar = (props) => {
     )
 }
 
-Navbar.propTypes = {
 
-}
-
-export default Navbar
+export default Header
