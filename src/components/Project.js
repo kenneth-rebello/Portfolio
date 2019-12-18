@@ -9,7 +9,7 @@ const Project = ({project}) => {
                 {project && 
                     <div className="card project-card">
                         <div className="card-content">
-                        <p className="card-title activator">{project.name}</p>
+                        <span className="card-title activator">{project.name}</span>
                         {project.github && <p><a href={`${project.github}`} target="_blank" rel="noopener noreferrer">Link to Github repository</a></p>}
                         </div>
                         <div className="card-reveal">

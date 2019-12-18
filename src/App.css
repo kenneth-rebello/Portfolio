@@ -79,9 +79,6 @@ nav img{
   background-image: linear-gradient(goldenrod, black);
 }
 
-.project-card span{
-  color: whitesmoke;
-}
 
 .card{
   display: grid;
@@ -94,9 +91,6 @@ nav img{
   font-weight: bold;
 }
 
-.card-reveal .card-title{
-  color: 'black'
-}
 
 .card a{
   color: gold;
@@ -176,13 +170,4 @@ nav img{
 
 .cert{
   height: inherit;
-}
-
-.sign-in{
-  background-color: goldenrod;
-  border: ridge;
-  color: black;
-  height: 2rem;
-  width: 8rem;
-  align-self: center;
 }
