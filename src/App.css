@@ -1,0 +1,188 @@
+nav{
+  background-color: black;
+  color: goldenrod;
+}
+
+nav i{
+  color: goldenrod;
+}
+
+nav li a{
+  color: goldenrod;
+}
+
+nav a:hover{
+  color: whitesmoke;
+}
+
+nav img{
+  height: 4rem;
+  width: 7rem;
+  padding:1%;
+}
+
+.sidenav{
+  background: black;
+}
+
+.sidenav li a{
+  color: goldenrod;
+}
+
+.social i{
+  color: black;
+  font-size: 3rem;
+  padding:1.2%;
+}
+
+.social a:hover i{
+  color: goldenrod
+}
+
+.header{
+  background-color: whitesmoke;
+  padding: 1%;
+  margin:0;
+}
+
+.header span{
+  font-family: 'Playfair Display', serif;
+  font-weight: bolder;
+  font-size: 3rem;
+  padding: 1%;
+  color: goldenrod;
+}
+
+.header img{
+  border-radius: 50%;
+  height: 20rem;
+  width: 18rem;
+  padding:1%;
+}
+
+.header p{
+  font-family: 'Jomolahri', serif;
+  padding: 0.3%;
+  padding-top: 0;
+  color: black;
+  font-size: 1.1rem;
+}
+
+.projects{
+  background-color: whitesmoke;
+  margin:0;
+}
+
+.project-card{
+  height: 12rem;
+  display: grid;
+  background-image: linear-gradient(goldenrod, black);
+}
+
+.project-card span{
+  color: whitesmoke;
+}
+
+.card{
+  display: grid;
+  height: 12rem;
+}
+
+.card-title{
+  color: black;
+  font-family: 'Merriweather', sans-serif;
+  font-weight: bold;
+}
+
+.card-reveal .card-title{
+  color: 'black'
+}
+
+.card a{
+  color: gold;
+  text-decoration: underline;
+}
+
+.card a:hover{
+  color: whitesmoke;
+  font-size: 1.2rem;
+}
+
+.card button{
+  display: grid;
+  justify-self: center;
+  align-self: center;
+  background-color: goldenrod;
+}
+
+.card button:hover{
+  background-color: whitesmoke;
+  color: black;
+}
+
+.title{
+  font-family: 'Merriweather', sans-serif;
+  font-size: 2.5rem;
+  padding:1%;
+  margin:0;
+}
+
+.skill-card{
+  background-color: black;
+  color: goldenrod;
+  max-height: 12rem;
+  display: grid;
+}
+
+.skill-card img{
+  height: 10rem;
+  width: 10rem;
+}
+
+.skill-card .card-content{
+  display: grid;
+  justify-self: center;
+  align-self: top;
+  margin-top: 0;
+  padding-top: 1%;
+}
+
+.cert-card{
+  height: 12rem;
+  display: grid;
+  background-image: linear-gradient(goldenrod, black);
+}
+
+.details{
+  background-color: goldenrod;
+  margin:0;
+  margin-bottom: 0;
+}
+
+.details span{
+  font-size: 0.9rem;
+}
+
+.cv{
+  font-size: 2.5rem;
+  font-weight: bolder;
+  color: black;
+  padding:1%
+}
+
+.cv:hover{
+  color: goldenrod;
+}
+
+.cert{
+  height: inherit;
+}
+
+.sign-in{
+  background-color: goldenrod;
+  border: ridge;
+  color: black;
+  height: 2rem;
+  width: 8rem;
+  align-self: center;
+}
