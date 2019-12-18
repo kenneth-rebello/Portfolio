@@ -53,11 +53,32 @@ export const checkForKenneth = async ( userAuth ) => {
 
 }
 
-export const createUserProfile = async ( userAuth ) => {
+export const getBio = async() => {
 
-    if(userAuth){
-        
-    }
+    let fetchedBio = '';
+    const docRef = await firestore.collection('details').doc('piM75SE1Ifnaa8YMW8D5');
+    await docRef.get().then(doc => {
+        if (doc.exists){
+            fetchedBio = doc.data().bio;
+        }else{
+            return null
+        }
+    });
+    return fetchedBio;
+}
+
+export const getPosition = async() => {
+
+    let fetchedPosition = '';
+    const docRef = await firestore.collection('details').doc('piM75SE1Ifnaa8YMW8D5');
+    await docRef.get().then(doc => {
+        if (doc.exists){
+            fetchedPosition = doc.data().position;
+        }else{
+            return null
+        }
+    });
+    return fetchedPosition;
 }
 
 export const addProject = (project) => {
@@ -106,6 +127,26 @@ export const getSkills = async () => {
     });
 
     return fetchedSkills;
+}
+
+export const getDetails = async () => {
+
+    let fetchedDetails = undefined;
+    const docRef = await firestore.collection('details').doc('piM75SE1Ifnaa8YMW8D5');
+    await docRef.get().then(doc => {
+        if (doc.exists){
+            const {email, location, phone} = doc.data();
+            fetchedDetails = {
+                'Email': email,
+                'Location': location,
+                'Phone': phone
+            }
+        }else{
+            return null
+        }
+    });
+    return fetchedDetails;
+
 }
 
 
