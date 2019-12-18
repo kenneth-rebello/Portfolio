@@ -5,18 +5,21 @@ import Header from './Header'
 import Projects from './Projects'
 import Skills from './Skills'
 import Honours from './Honours'
-import {auth, checkForKenneth, getBio, getPosition, getDetails } from '../firebase/firebase.utils';
+import {auth, checkForUser, getBio, getPosition, getDetails, sendMessage, signInWithGoogle } from '../firebase/firebase.utils';
 
 import Spinner from './spinner/Spinner'
 
 const Main = () => {
 
     const [currentUser, setCurrentUser] = useState(undefined);
+    const [visitor, setVisitor] = useState(undefined);
     const [bio, setBio] = useState('');
     const [position, setPosition] = useState('');
     const [details, setDetails] = useState(undefined);
     const [loading, setLoading] = useState(true);
     const mapDetails = ['Email', 'Phone', 'Location'];
+
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
         fetchBio();
@@ -27,16 +30,25 @@ const Main = () => {
         const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
     
           if(userAuth){
-            
-            const userRef = await checkForKenneth(userAuth);
-            
+
+            const userRef = await checkForUser(userAuth);
+
             if(userRef){
-                userRef.onSnapshot(async snapShot => {
-                    await setCurrentUser({
-                        id: snapShot.id,
-                        ...snapShot.data()
+                if(userAuth.email === "kentherebel07@gmail.com" || userAuth.email === "krebello07@gmail.com"){
+                    userRef.onSnapshot(async snapShot => {
+                        await setCurrentUser({
+                            id: snapShot.id,
+                            ...snapShot.data()
+                        })
                     })
-                })
+                }else{
+                    userRef.onSnapshot(async snapShot => {
+                        await setVisitor({
+                            id: snapShot.id,
+                            ...snapShot.data()
+                        })
+                    })
+                }
             }else{
                 await setCurrentUser(undefined);
             }
@@ -64,6 +76,17 @@ const Main = () => {
         setLoading(false);
     }
 
+    const Changer = e => {
+        setMessage(e.target.value)
+    }
+
+    const Submitter = async e => {
+        await signInWithGoogle();
+        if(visitor && message){
+            sendMessage(message, visitor);
+        }
+    } 
+
     return (
         loading ? <Spinner/> :<Fragment>    
             <Header user={currentUser}/>
@@ -87,6 +110,14 @@ const Main = () => {
                         <a href="https://www.facebook.com/kenneth.rebello.3?ref=bookmarks"><i className="fab fa-facebook"></i></a>
                         <a href="https://twitter.com/KenRebel07"><i className="fab fa-twitter"></i></a>
                     </div>
+                </div>
+                <div className="col l11 m10 s9">
+                    <input type="text" name="message" 
+                        className="message"
+                        placeholder="Leave a message" onChange={e => Changer(e)}/>
+                </div>
+                <div className="col l1 m2 s3">
+                    <button className=" btn msg-btn" onClick={e => Submitter(e)}>Send</button>
                 </div>
             </div>
 

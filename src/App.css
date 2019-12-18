@@ -39,6 +39,25 @@ nav img{
   color: goldenrod
 }
 
+.msg-btn{
+  background-color: goldenrod;
+}
+
+.msg-btn:hover{
+  background-color: black;
+  color: goldenrod;
+}
+
+.msg-btn:active{
+  background-color: black;
+  color: goldenrod;
+}
+
+.msg-btn:focus{
+  background-color: black;
+  color: goldenrod;
+}
+
 .header{
   background-color: whitesmoke;
   padding: 1%;
@@ -79,6 +98,11 @@ nav img{
   background-image: linear-gradient(goldenrod, black);
 }
 
+.card-subtitle{
+  cursor: pointer;
+  margin-top: 1rem;
+  color: whitesmoke;
+}
 
 .card{
   display: grid;
@@ -110,6 +134,16 @@ nav img{
 }
 
 .card button:hover{
+  background-color: whitesmoke;
+  color: black;
+}
+
+.card button:active{
+  background-color: whitesmoke;
+  color: black;
+}
+
+.card button:focus{
   background-color: whitesmoke;
   color: black;
 }

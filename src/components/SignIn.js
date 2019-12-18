@@ -6,7 +6,7 @@ const SignIn = ({user}) => {
     return (
         <li>
             {!user ? <a onClick={signInWithGoogle} href="#">
-                Sign In
+                Admin SignIn
             </a>: <a onClick={()=>auth.signOut()} href="#">
                 Sign Out    
             </a>}

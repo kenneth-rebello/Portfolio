@@ -10,7 +10,7 @@ export default function Spinner() {
                 alignSelf: 'center',
                 justifySelf:'center',
                 paddingLeft: '5rem'
-            }} src={loader}/>
+            }} src={loader} alt="..."/>
         </div>
     )
 }

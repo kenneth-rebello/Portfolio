@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/storage';
 
 const config = {
     apiKey: "AIzaSyB2vAe-Crx7OymGo_i6NKdnf-e7kAqReP0",
@@ -18,39 +19,33 @@ export const auth = firebase.auth();
 
 export const firestore = firebase.firestore();
 
-export const checkForKenneth = async ( userAuth ) => {
+export const firecloud = firebase.storage();
+
+export const checkForUser = async ( userAuth ) => {
 
     if(userAuth){
 
-        if(userAuth.email !== "kentherebel07@gmail.com" && userAuth.email !== "krebello07@gmail.com"){
-            
-            alert('Sorry, only Kenneth Rebello can sign in on this webpage');
-            return null;
+        const userRef = firestore.doc(`users/${userAuth.uid}`);
 
-        }else{
-            const userRef = firestore.doc(`users/${userAuth.uid}`);
+        const snapShot = await userRef.get();
+        if(!snapShot.exists){
 
-            const snapShot = await userRef.get();
-            if(!snapShot.exists){
+            const { displayName, email, photoURL } = userAuth;
+            const createdAt = new Date();
 
-                const { displayName, email, photoURL } = userAuth;
-                const createdAt = new Date();
-
-                try {
-                    await userRef.set({
-                        displayName,
-                        email,
-                        createdAt,
-                        photoURL
-                    })
-                }catch(err){
-                    console.log('Error creating message'+err.message)
-                }
+            try {
+                await userRef.set({
+                    displayName,
+                    email,
+                    createdAt,
+                    photoURL
+                })
+            }catch(err){
+                console.log('Error creating message'+err.message)
             }
-            return userRef;
         }
+        return userRef;
     }
-
 }
 
 export const getBio = async() => {
@@ -81,10 +76,25 @@ export const getPosition = async() => {
     return fetchedPosition;
 }
 
+export const sendMessage = ( msg, user ) => {
+
+    firestore.collection("messages").add({
+        message: msg,
+        name: user.displayName,
+        email: user.email
+    }).then(function(docRef) {
+        alert("Message sent");
+    })
+    .catch(function(error) {
+        console.error("Error sending message");
+    });
+
+}
+
 export const addProject = (project) => {
     firestore.collection("projects").add({...project})
     .then(function(docRef) {
-        alert("Project added with ID: ", docRef.id);
+        alert(`Project added with ID: ${docRef.id}`);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -108,7 +118,7 @@ export const getProjects = async () => {
 export const addSkill = (skill) => {
     firestore.collection("skills").add({...skill})
     .then(function(docRef) {
-        alert("Skill added with ID: ", docRef.id);
+        alert(`Skill added with ID: ${docRef.id}`);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -149,6 +159,45 @@ export const getDetails = async () => {
 
 }
 
+
+export const addUpload = (formData) => {
+
+    const {title, file} = formData;
+    
+    firecloud.ref(`uploads/${title}`).put(file);
+
+    firestore.collection("uploads").add({
+        title
+    });
+
+}
+
+export const getHonours = async() => {
+
+    let fetchedTitles = [];
+    const collectionRef = await firestore.collection('uploads');
+    await collectionRef.get().then(snapshot => {
+        fetchedTitles = snapshot.docs.map(doc => {
+            return doc.data().title
+        })
+    });
+
+    const storageRef = firecloud.ref();
+
+    let fetchedHonours = [];
+    let url = '';
+
+    await fetchedTitles.map(async title => {
+
+        url = await storageRef.child(`uploads/${title}`).getDownloadURL()
+        fetchedHonours.push({
+            title, url
+        })
+
+    });
+
+    return(fetchedHonours)
+}
 
 //Google Sign In
 const provider = new firebase.auth.GoogleAuthProvider();
