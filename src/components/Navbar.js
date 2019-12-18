@@ -26,6 +26,7 @@ const Navbar = (props) => {
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#details">Contact</a></li>
+                <SignIn user={props.user}/>
             </ul>
         </Fragment>
     )
