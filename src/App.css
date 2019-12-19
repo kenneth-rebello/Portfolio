@@ -39,6 +39,10 @@ nav img{
   color: goldenrod
 }
 
+.message::placeholder{
+  color: goldenrod;
+}
+
 .msg-btn{
   background-color: goldenrod;
 }

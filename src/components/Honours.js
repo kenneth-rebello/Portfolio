@@ -44,7 +44,7 @@ const Honours = props => {
     return (
         <div className="row projects">
             <h1 className="title">Courses and Competitions</h1>
-            {honours && honours.map(each => (
+            {honours ? honours.map(each => (
                 <div className="col l3 m6 s12">
                     <div class="card cert-card">
                         <div class="card-content">
@@ -60,7 +60,7 @@ const Honours = props => {
                         </div>
                     </div>
                 </div>
-            ))}
+            )): <p>Could not load certificates</p>}
             
             <Fragment>
                 {user && <div className="col l3 m6 s12">

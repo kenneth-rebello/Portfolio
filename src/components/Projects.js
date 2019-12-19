@@ -49,9 +49,9 @@ const Projects = props => {
         <Fragment>
             <div className="row projects" id="projects">
                 <h1 className="title">Projects</h1>
-                {projects && projects.map((pro)=>(
+                {projects ? projects.map((pro)=>(
                     <Project key={pro._id} project={pro}/>
-                ))}
+                )) : <p>Could not load projects</p>}
                 <Fragment>
                     {user && <div className="col l3 m6 s12">
                         <div className="card-panel card">

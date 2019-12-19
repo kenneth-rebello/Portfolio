@@ -46,9 +46,9 @@ const Skills = props => {
         <Fragment>
             <div className="row projects">
                 <h1 className="title" id="skills">Skills</h1>
-                {skills.length>0 && skills.map((pro)=>(
+                {skills ? skills.map((pro)=>(
                     <Skill key={pro._id} skill={pro}/>
-                ))}
+                )) : <p>Could not load skill cards</p>}
                 <Fragment>
                     {user && <div className="col l3 m6 s12">
                         <div className="card-panel card">
