@@ -8,6 +8,7 @@ import Honours from './Honours'
 import {auth, checkForUser, getBio, getPosition, getDetails, sendMessage, signInWithGoogle } from '../firebase/firebase.utils';
 
 import Spinner from './spinner/Spinner'
+import Experiences from './Experiences'
 
 const Main = () => {
 
@@ -121,6 +122,7 @@ const Main = () => {
                 </div>
             </div>
 
+            <Experiences/>
             <Projects user={currentUser}/>
             <Skills user={currentUser}/>
             <Honours user={currentUser}/>
