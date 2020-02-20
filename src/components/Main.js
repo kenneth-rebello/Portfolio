@@ -18,7 +18,7 @@ const Main = () => {
     const [position, setPosition] = useState('');
     const [details, setDetails] = useState(undefined);
     const [loading, setLoading] = useState(true);
-    const mapDetails = ['Email', 'Phone', 'Location'];
+    const mapDetails = ['Email', 'Location'];
 
     const [message, setMessage] = useState('');
 
@@ -131,7 +131,7 @@ const Main = () => {
                 
                 <div className="row">
                     { details && mapDetails.map(detail => (
-                        <div key={detail} className="col l4 m6 s12">
+                        <div key={detail} className="col l6 s12">
                             <p className="center-align">{`${detail}: ${details[detail]}`}</p>        
                         </div>   
                     ))}
